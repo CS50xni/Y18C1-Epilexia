@@ -20,3 +20,55 @@ void setup()
   
   randomSeed(analogRead(10));  //creando semilla para crear un patron aleatorio
 }
+
+void loop()
+{
+  turnEverythingOff();
+  flickerOn();
+  turnEverythingOn();
+  delay(time);
+  turnOnAndOffAllByLayerUpAndDownNotTimed();
+  layerstompUpAndDown();
+  spiralInAndOut();
+  turnOnAndOffAllByColumnSideways();
+  delay(time);
+  aroundEdgeDown();
+  turnEverythingOff();
+  randomflicker();
+  randomRain();
+  diagonalRectangle();
+  goThroughAllLedsOneAtATime();
+  propeller();
+  spiralInAndOut();
+  flickerOff();
+  turnEverythingOff();
+  delay(2000);
+}
+
+
+//turn all off
+void turnEverythingOff()
+ {
+   for(int i = 0; i<16; i++)
+   {
+     digitalWrite(column[i], 1);
+   }
+   for(int i = 0; i<4; i++)
+   {
+     digitalWrite(layer[i], 0);
+   }
+ }
+ 
+//turn all on
+void turnEverythingOn()
+{
+  for(int i = 0; i<16; i++)
+  {
+    digitalWrite(column[i], 0);
+  }
+  //turning on layers
+  for(int i = 0; i<4; i++)
+  {
+    digitalWrite(layer[i], 1);
+  }
+}
